@@ -42,16 +42,27 @@ export default function CamperCard({ camper }: CamperCardProps) {
               className={styles.favoriteButton}
               onClick={() => toggleFavorite(camper.id)}
             >
-              {favorite ? "♥" : "♡"}
+              {favorite ? (
+                <svg className={styles.heaartIcon} aria-hidden="true">
+                  <use href="/icons.svg#pressed_heart" />
+                </svg>
+              ) : (
+                <svg className={styles.heaartIcon} aria-hidden="true">
+                  <use href="/icons.svg#default_heart" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
 
         <div className={styles.metaRow}>
-          <span>
-            ⭐ {camper.rating.toFixed(1)} ({camper.reviews?.length ?? 0}{" "}
-            reviews)
+          <span className={styles.rating}>
+            <svg className={styles.starIcon} aria-hidden="true">
+              <use href="/icons.svg#pressed_star" />
+            </svg>
+            {camper.rating.toFixed(1)} ({camper.reviews?.length ?? 0} reviews)
           </span>
+
           <span className={styles.location}>{camper.location}</span>
         </div>
 

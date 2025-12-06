@@ -20,6 +20,10 @@ export default function Filter() {
     );
   };
 
+  const toggleBodyType = (value: BodyType) => {
+    setBodyType((prev) => (prev === value ? null : value));
+  };
+
   const handleSearch = () => {
     setFilters({ location, bodyType, equipment });
     resetAndFetch();
@@ -125,7 +129,7 @@ export default function Filter() {
             className={
               bodyType === "panelTruck" ? styles.typeActive : styles.type
             }
-            onClick={() => setBodyType("panelTruck")}
+            onClick={() => toggleBodyType("panelTruck")}
           >
             <svg className={styles.chipIcon} aria-hidden="true">
               <use href="/icons.svg#bi_grid-1x2" />
@@ -138,7 +142,7 @@ export default function Filter() {
             className={
               bodyType === "fullyIntegrated" ? styles.typeActive : styles.type
             }
-            onClick={() => setBodyType("fullyIntegrated")}
+            onClick={() => toggleBodyType("fullyIntegrated")}
           >
             <svg className={styles.chipIcon} aria-hidden="true">
               <use href="/icons.svg#bi_grid" />
@@ -149,7 +153,7 @@ export default function Filter() {
           <button
             type="button"
             className={bodyType === "alcove" ? styles.typeActive : styles.type}
-            onClick={() => setBodyType("alcove")}
+            onClick={() => toggleBodyType("alcove")}
           >
             <svg className={styles.chipIcon} aria-hidden="true">
               <use href="/icons.svg#bi_grid-3x3-gap" />

@@ -52,12 +52,16 @@
 }
 
 .favoriteButton {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid #dadde1;
-  background-color: #ffffff;
+  border: none;
+  background: transparent;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   cursor: pointer;
+  line-height: 0;
 }
 
 .metaRow {
@@ -100,7 +104,7 @@
   margin-top: auto;
 }
 
-.showMore {
+/* .showMore {
   padding: 10px 24px;
   border-radius: 200px;
   border: none;
@@ -111,5 +115,60 @@
 }
 
 .showMore:hover {
+  background-color: #d84343;
+} */
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* расстояние между рейтингом и локацией */
+}
+
+/* контейнер с иконкой и текстом рейтинга */
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px; /* расстояние между звездой и числом */
+}
+
+/* сама звезда */
+.starIcon {
+  width: 16px; /* или 14px, если хочется ещё меньше */
+  height: 16px;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.heaartIcon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.showMore {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: #fff;
+
+  border-radius: 200px;
+  padding: 16px 60px;
+  margin-top: 8px;
+
+  /* width: 166px;
+  height: 56px; */
+  border: none;
+
+  background-color: #e44848;
+
+  cursor: pointer;
+  transition: color 150ms ease;
+}
+
+.showMore:hover,
+.showMore:focus {
   background-color: #d84343;
 }

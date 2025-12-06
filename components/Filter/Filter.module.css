@@ -130,10 +130,10 @@
   color: #101828;
 }
 
-/* .chipActive {
+.chipActive {
   border-color: #e44848;
   background-color: rgba(228, 72, 72, 0.08);
-} */
+}
 
 .chipIcon {
   width: 32px;
@@ -142,6 +142,7 @@
   fill: #475467;
 }
 
+/*
 /* .types {
   display: grid;
 
@@ -158,10 +159,12 @@
   cursor: pointer;
 }
 
+*/
+
 .typeActive {
   border-color: #e44848;
   background-color: rgba(228, 72, 72, 0.08);
-} */
+}
 
 .searchButton {
   font-family: "Inter", sans-serif;
@@ -176,7 +179,7 @@
   margin-top: 8px;
 
   width: 166px;
-  height: 56px;
+  /* height: 56px; */
   border: none;
 
   background-color: #e44848;
