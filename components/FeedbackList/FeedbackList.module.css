@@ -1,0 +1,50 @@
+.feedback {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  padding: 16px 0;
+  border-bottom: 1px solid #f2f4f7;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #f2f4f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.name {
+  margin: 0;
+  font-weight: 600;
+}
+
+.stars {
+  margin: 2px 0 0;
+  font-size: 14px;
+  color: #ffc531;
+}
+
+.text {
+  margin: 0;
+  font-size: 14px;
+  color: #475467;
+}
+
+.empty {
+  font-size: 14px;
+  color: #6c727f;
+}
