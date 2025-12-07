@@ -1,0 +1,200 @@
+.main {
+  padding: 40px 0 80px;
+  background-color: #f7f7f7;
+}
+
+.camperPage {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-inline: 64px;
+}
+
+/* верхняя часть */
+.camperTop {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 60px;
+}
+
+.camperTopHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.camperTopInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.camperTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #101828;
+  margin: 0;
+}
+
+.camperTopMeta {
+  display: flex;
+
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #101828;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.reviews {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.location {
+  display: inline-flex;
+  align-items: center;
+}
+
+.starIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.mapIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.camperTopPrice {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #101828;
+  margin: 0;
+}
+
+.camperGallery {
+  /* margin-top: 24px; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.camperGallery img {
+  width: 100%;
+  height: 312px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.camperDescription {
+  /* margin-top: 24px; */
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #475467;
+  margin: 0;
+}
+
+/* низ: табы + фича/ревью + форма */
+.camperBottom {
+  /* margin-top: 40px; */
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* левая колонка (табы + контент) */
+.camperLeft {
+  flex: 1;
+}
+
+/* правая колонка под BookingForm — фикс */
+.camperRight {
+  flex: 0 0 448px; /* подгони под макет, если надо */
+}
+
+/* табы */
+.camperTabs {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.camperTabs::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #dadde1;
+  z-index: 0;
+}
+
+.camperTab {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 24px;
+
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+  cursor: pointer;
+
+  z-index: 1;
+}
+
+.camperTabActive {
+  color: #101828;
+  border-bottom-color: #e44848;
+}
+
+.camperTabActive::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  height: 5px;
+  background-color: #e44848;
+  border-radius: 999px;
+  margin-bottom: -24px;
+  bottom: -2px;
+}
+
+/* простые сообщения */
+.stateMessage {
+  max-width: 1440px;
+  margin: 40px auto 0;
+  padding-inline: 64px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}

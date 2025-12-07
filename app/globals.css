@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --color-bg: #f7f7f7;
   --color-surface: #ffffff;
   --color-text: #101828;
@@ -49,6 +49,7 @@ button {
 
 /* каталог */
 
+/*
 .catalog-page {
   display: grid;
   grid-template-columns: 360px minmax(0, 1fr);
@@ -78,6 +79,7 @@ button {
 
 /* страница одного кемпера */
 
+/*
 .camper-page {
   display: flex;
   flex-direction: column;
@@ -154,4 +156,4 @@ button {
   height: 3px;
   border-radius: 2px;
   background-color: var(--color-accent);
-}
+} */

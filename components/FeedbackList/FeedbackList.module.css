@@ -1,25 +1,35 @@
 .feedback {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 44px;
 }
 
 .item {
-  padding: 16px 0;
-  border-bottom: 1px solid #f2f4f7;
+  /* padding: 16px 0; */
+  /* border-bottom: 1px solid #f2f4f7; */
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: 16px;
+  /* margin-bottom: 8px; */
 }
 
 .avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #e44848;
+
+  border-radius: 60px;
+  width: 60px;
+  height: 60px;
   background-color: #f2f4f7;
   display: flex;
   align-items: center;
@@ -27,20 +37,41 @@
   font-weight: 600;
 }
 
+.reviewerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 .name {
+  font-family: "Inter", sans-serif;
   margin: 0;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #101828;
+}
+
+.starIcon {
+  width: 16px;
+  height: 16px;
 }
 
 .stars {
-  margin: 2px 0 0;
-  font-size: 14px;
-  color: #ffc531;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  margin: 0;
+
+  /* font-size: 14px; */
+  /* color: #ffc531; */
 }
 
 .text {
   margin: 0;
-  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
   color: #475467;
 }
 

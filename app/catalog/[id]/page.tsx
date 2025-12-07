@@ -1,4 +1,3 @@
-// app/catalog/[id]/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -10,10 +9,10 @@ import FeedbackList from "../../../components/FeedbackList/FeedbackList";
 import BookingForm from "../../../components/BookingForm/BookingForm";
 import { fetchCamperById } from "../../../lib/api";
 import type { Camper, GalleryImage } from "../../../lib/types";
+import styles from "./CamperPage.module.css";
 
 type Tab = "features" | "feedback";
 
-// аккуратно достаём url из строки или объекта { thumb, original }
 function getImageUrl(value: string | GalleryImage | undefined): string | null {
   if (!value) return null;
   if (typeof value === "string") return value;
@@ -22,7 +21,7 @@ function getImageUrl(value: string | GalleryImage | undefined): string | null {
 
 export default function CamperPage() {
   const params = useParams<{ id: string }>();
-  const id = params.id; // теперь это нормальная строка, а не undefined
+  const id = params.id;
 
   const [camper, setCamper] = useState<Camper | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +29,7 @@ export default function CamperPage() {
   const [tab, setTab] = useState<Tab>("features");
 
   useEffect(() => {
-    if (!id) return; // на всякий случай
+    if (!id) return;
 
     const loadCamper = async () => {
       setIsLoading(true);
@@ -54,29 +53,50 @@ export default function CamperPage() {
   return (
     <>
       <Header />
-      <main>
-        {isLoading && <p>Loading...</p>}
-        {!isLoading && error && <p>{error}</p>}
-        {!isLoading && !error && !camper && <p>Camper not found</p>}
+
+      <main className={styles.main}>
+        {isLoading && <p className={styles.stateMessage}>Loading...</p>}
+        {!isLoading && error && <p className={styles.stateMessage}>{error}</p>}
+        {!isLoading && !error && !camper && (
+          <p className={styles.stateMessage}>Camper not found</p>
+        )}
 
         {!isLoading && !error && camper && (
-          <section className="camper-page">
-            {/* Верхняя часть: название, рейтинг, цена, галерея, описание */}
-            <div className="camper-top">
-              <div className="camper-top-header">
-                <h1>{camper.name}</h1>
+          <section className={styles.camperPage}>
+            {/* Верхняя часть */}
+            <div className={styles.camperTop}>
+              <div className={styles.camperTopHeader}>
+                <div className={styles.camperTopInfo}>
+                  <h1 className={styles.camperTitle}>{camper.name}</h1>
 
-                <p className="camper-top-meta">
-                  ⭐ {Number(camper.rating || 0).toFixed(1)} (
-                  {camper.reviews?.length ?? 0} reviews) · {camper.location}
-                </p>
+                  <p className={styles.camperTopMeta}>
+                    <div className={styles.rating}>
+                      {" "}
+                      <svg className={styles.starIcon} aria-hidden="true">
+                        <use href="/icons.svg#pressed_star" />
+                      </svg>
+                      <span className={styles.reviews}>
+                        {Number(camper.rating || 0).toFixed(1)} (
+                        {camper.reviews?.length ?? 0} reviews)
+                      </span>
+                    </div>
 
-                <p className="camper-top-price">
+                    <div className={styles.location}>
+                      {" "}
+                      <svg className={styles.mapIcon} aria-hidden="true">
+                        <use href="/icons.svg#map" />
+                      </svg>{" "}
+                      {camper.location}
+                    </div>
+                  </p>
+                </div>
+
+                <p className={styles.camperTopPrice}>
                   €{Number(camper.price || 0).toFixed(2)}
                 </p>
               </div>
 
-              <div className="camper-gallery">
+              <div className={styles.camperGallery}>
                 {camper.gallery?.map((item, index) => {
                   const url = getImageUrl(item);
                   if (!url) return null;
@@ -85,19 +105,19 @@ export default function CamperPage() {
                 })}
               </div>
 
-              <p>{camper.description}</p>
+              <p className={styles.camperDescription}>{camper.description}</p>
             </div>
 
-            {/* Нижняя часть: табы + форма брони справа */}
-            <div className="camper-bottom">
-              <div>
-                <div className="camper-tabs">
+            {/* Нижняя часть */}
+            <div className={styles.camperBottom}>
+              <div className={styles.camperLeft}>
+                <div className={styles.camperTabs}>
                   <button
                     type="button"
                     className={
                       tab === "features"
-                        ? "camper-tab camper-tab--active"
-                        : "camper-tab"
+                        ? `${styles.camperTab} ${styles.camperTabActive}`
+                        : styles.camperTab
                     }
                     onClick={() => setTab("features")}
                   >
@@ -108,8 +128,8 @@ export default function CamperPage() {
                     type="button"
                     className={
                       tab === "feedback"
-                        ? "camper-tab camper-tab--active"
-                        : "camper-tab"
+                        ? `${styles.camperTab} ${styles.camperTabActive}`
+                        : styles.camperTab
                     }
                     onClick={() => setTab("feedback")}
                   >
@@ -123,7 +143,9 @@ export default function CamperPage() {
                 )}
               </div>
 
-              <BookingForm camperName={camper.name} />
+              <div className={styles.camperRight}>
+                <BookingForm camperName={camper.name} />
+              </div>
             </div>
           </section>
         )}

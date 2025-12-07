@@ -18,11 +18,28 @@ export default function FeedbackList({ reviews }: FeedbackListProps) {
             <div className={styles.avatar}>
               {review.reviewer_name.charAt(0).toUpperCase()}
             </div>
-            <div>
+            <div className={styles.reviewerInfo}>
               <p className={styles.name}>{review.reviewer_name}</p>
               <p className={styles.stars}>
-                {"★".repeat(review.reviewer_rating)}
-                {"☆".repeat(5 - review.reviewer_rating)}
+                {Array.from({ length: 5 }, (_, index) => {
+                  const isFilled = index < review.reviewer_rating;
+
+                  return (
+                    <svg
+                      key={index}
+                      className={styles.starIcon}
+                      aria-hidden="true"
+                    >
+                      <use
+                        href={
+                          isFilled
+                            ? "/icons.svg#pressed_star"
+                            : "/icons.svg#default_star"
+                        }
+                      />
+                    </svg>
+                  );
+                })}
               </p>
             </div>
           </div>

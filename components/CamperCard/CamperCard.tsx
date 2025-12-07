@@ -21,20 +21,23 @@ export default function CamperCard({ camper }: CamperCardProps) {
   const favorite = isFavorite(camper.id);
 
   const firstImage = getImageUrl(camper.gallery?.[0]);
-  // временно можно посмотреть:
-  // console.log('card gallery:', camper.gallery);
+
 
   return (
     <article className={styles.card}>
       <div className={styles.imageWrapper}>
         {firstImage && (
-          <img src={firstImage} alt={camper.name} className={styles.image} />
+          <img
+            src={firstImage}
+            alt={camper.name}
+            className={styles.cardimage}
+          />
         )}
       </div>
 
       <div className={styles.content}>
         <div className={styles.headerRow}>
-          <h3 className={styles.title}>{camper.name}</h3>
+          <h3 className={styles.cardtitle}>{camper.name}</h3>
           <div className={styles.priceBlock}>
             <span className={styles.price}>€{formatPrice(camper.price)}</span>
             <button
