@@ -1,6 +1,5 @@
 .form {
   width: 641px;
-  /* max-width: 641px; */
   padding: 44px;
   border-radius: 20px;
   border: 1px solid #dadde1;
@@ -41,7 +40,6 @@
 
 .field {
   display: block;
-  /* margin-bottom: 14px; */
 }
 
 .input {

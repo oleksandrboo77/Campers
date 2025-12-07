@@ -1,15 +1,12 @@
 .main {
   padding: 40px 0 80px;
-  background-color: #f7f7f7;
 }
 
 .camperPage {
   max-width: 100%;
-  /* margin: 0 auto; */
   padding-inline: 64px;
 }
 
-/* верхняя часть */
 .camperTop {
   display: flex;
   flex-direction: column;
@@ -94,7 +91,6 @@
 }
 
 .camperGallery {
-  /* margin-top: 24px; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
@@ -108,7 +104,6 @@
 }
 
 .camperDescription {
-  /* margin-top: 24px; */
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -117,27 +112,23 @@
   margin: 0;
 }
 
-/* низ: табы + фича/ревью + форма */
 .camperBottom {
   margin-top: 40px;
 }
 
-/* левая колонка (табы + контент) */
 .camperLeft {
   flex: 1;
 }
 
-/* правая колонка под BookingForm — фикс */
 .camperRight {
-  flex: 0 0 448px; /* фикс ширина формы, подгони под макет */
+  flex: 0 0 448px;
 }
 
-/* табы */
 .camperTabs {
   position: relative;
   display: flex;
   gap: 24px;
-  margin-bottom: 32px; /* расстояние от табов до контента */
+  margin-bottom: 32px;
 }
 
 .camperTabs::after {
@@ -147,7 +138,7 @@
   right: 0;
   bottom: 0;
   height: 1px;
-  background-color: #dadde1; /* серая линия как в макете */
+  background-color: #dadde1;
   z-index: 0;
 }
 
@@ -155,16 +146,14 @@
   position: relative;
   background: none;
   border: none;
-  padding: 0 0 24px; /* место под красную полоску */
-
+  padding: 0 0 24px;
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 20px;
   line-height: 1.2;
   color: #101828;
   cursor: pointer;
-
-  z-index: 1; /* поверх серой линии */
+  z-index: 1;
 }
 
 .camperTabActive {
@@ -189,7 +178,6 @@
   gap: 40px;
 }
 
-/* простые сообщения */
 .stateMessage {
   max-width: 1440px;
   margin: 40px auto 0;

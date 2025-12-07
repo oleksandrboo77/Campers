@@ -10,7 +10,7 @@ interface FeatureConfig extends CamperFeature {
   isActive: (camper: Camper) => boolean;
 }
 
-const FEATURE_CONFIG: FeatureConfig[] = [
+export const FEATURE_CONFIG: FeatureConfig[] = [
   {
     key: "automatic",
     label: "Automatic",

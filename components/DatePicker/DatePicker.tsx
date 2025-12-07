@@ -22,12 +22,11 @@ interface DatePickerProps {
 function getCalendarWeeks(month: Date): Date[][] {
   const monthStart = startOfMonth(month);
   const monthEnd = endOfMonth(month);
-  const gridStart = startOfWeek(monthStart, { weekStartsOn: 1 }); // понедельник
+  const gridStart = startOfWeek(monthStart, { weekStartsOn: 1 });
 
   const weeks: Date[][] = [];
   let current = gridStart;
 
-  // делаем максимум 6 недель — как в обычных календарях
   for (let w = 0; w < 6; w++) {
     const week: Date[] = [];
     for (let d = 0; d < 7; d++) {
@@ -88,7 +87,6 @@ export default function DatePicker({
           <div className={styles.arrow} />
 
           <div className={styles.calendar}>
-            {/* шапка как в макете */}
             <div className={styles.header}>
               <button
                 type="button"
@@ -121,7 +119,6 @@ export default function DatePicker({
 
             <div className={styles.divider} />
 
-            {/* Сетка */}
             <table className={styles.table}>
               <thead>
                 <tr>

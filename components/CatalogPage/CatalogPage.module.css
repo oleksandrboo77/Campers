@@ -1,6 +1,5 @@
 .catalogPage {
   padding: 48px 0 80px 0;
-  background-color: #f7f7f7; /* если по макету нужен серый фон */
 }
 
 .container {
@@ -13,38 +12,30 @@
   gap: 64px;
 }
 
-/* фиксированная ширина 360px */
 .sidebarColumn {
-  flex: 0 0 360px; /* basis = 360, не растёт, не сжимается */
+  flex: 0 0 360px;
   max-width: 360px;
 }
 
-/* правая часть — тянется */
 .content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 40px;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
 }
 
 .loadMore {
   font-family: "Inter", sans-serif;
-
   background-color: #fff;
-
   border-radius: 200px;
-  /* padding: 16px 40px; */
   border: none;
-
-  /* background-color: #e44848; */
   cursor: pointer;
-
   align-self: center;
   border: 1px solid #dadde1;
   border-radius: 200px;

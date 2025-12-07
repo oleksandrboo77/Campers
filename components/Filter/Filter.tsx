@@ -59,7 +59,7 @@ export default function Filter() {
             onClick={() => toggleEquipment("AC")}
           >
             <svg className={styles.chipIcon} aria-hidden="true">
-              <use href="/categories.svg#wind" />
+              <use href="/icons.svg#wind" />
             </svg>
             AC
           </button>
@@ -73,7 +73,7 @@ export default function Filter() {
           >
             {" "}
             <svg className={styles.chipIcon} aria-hidden="true">
-              <use href="/categories.svg#diagram" />
+              <use href="/icons.svg#diagram" />
             </svg>
             Automatic
           </button>
@@ -87,7 +87,7 @@ export default function Filter() {
           >
             {" "}
             <svg className={styles.chipIcon} aria-hidden="true">
-              <use href="/categories.svg#cup-hot" />
+              <use href="/icons.svg#cup-hot" />
             </svg>
             Kitchen
           </button>
@@ -114,7 +114,7 @@ export default function Filter() {
             onClick={() => toggleEquipment("bathroom")}
           >
             <svg className={styles.chipIcon} aria-hidden="true">
-              <use href="/categories.svg#shower" />
+              <use href="/icons.svg#ph_shower" />
             </svg>
             Bathroom
           </button>

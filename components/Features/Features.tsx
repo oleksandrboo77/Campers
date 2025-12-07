@@ -1,5 +1,6 @@
 import styles from "./Features.module.css";
 import type { Camper } from "../../lib/types";
+import { FEATURE_CONFIG } from "../../lib/camperFeatures";
 
 interface FeaturesProps {
   camper: Camper;
@@ -18,79 +19,27 @@ interface VehicleDetail {
   value?: string;
 }
 
-function capitalize(value?: string) {
+function formatDetailValue(value?: string) {
   if (!value) return "";
-  return value.charAt(0).toUpperCase() + value.slice(1);
+
+  let normalized = value.replace(/[_-]+/g, " ");
+
+  normalized = normalized.replace(/([a-z])([A-Z])/g, "$1 $2");
+
+  normalized = normalized.toLowerCase().trim();
+
+  const parts = normalized.split(/\s+/);
+  if (parts.length === 0) return "";
+
+  const [first, ...rest] = parts;
+  const firstFormatted = first.charAt(0).toUpperCase() + first.slice(1);
+
+  return [firstFormatted, ...rest].join(" ");
 }
 
-const FEATURE_CONFIG: FeatureConfig[] = [
-  {
-    key: "automatic",
-    label: "Automatic",
-    iconHref: "/categories.svg#diagram",
-    isActive: (c) => c.transmission === "automatic",
-  },
-  {
-    key: "ac",
-    label: "AC",
-    iconHref: "/categories.svg#wind",
-    isActive: (c) => !!c.AC,
-  },
-  {
-    key: "petrol",
-    label: "Petrol",
-    iconHref: "/categories.svg#fuel-pump",
-    isActive: (c) => c.engine === "petrol",
-  },
-  {
-    key: "kitchen",
-    label: "Kitchen",
-    iconHref: "/categories.svg#cup-hot",
-    isActive: (c) => !!c.kitchen,
-  },
-  {
-    key: "radio",
-    label: "Radio",
-    iconHref: "/categories.svg#radio",
-    isActive: (c) => !!c.radio,
-  },
-  {
-    key: "bathroom",
-    label: "Bathroom",
-    iconHref: "/categories.svg#shower",
-    isActive: (c) => !!c.bathroom,
-  },
-  {
-    key: "refrigerator",
-    label: "Refrigerator",
-    iconHref: "/categories.svg#solar_fridge",
-    isActive: (c) => !!c.refrigerator,
-  },
-  {
-    key: "microwave",
-    label: "Microwave",
-    iconHref: "/categories.svg#microwave",
-    isActive: (c) => !!c.microwave,
-  },
-  {
-    key: "gas",
-    label: "Gas",
-    iconHref: "/categories.svg#gas",
-    isActive: (c) => !!c.gas,
-  },
-  {
-    key: "water",
-    label: "Water",
-    iconHref: "/categories.svg#water",
-    isActive: (c) => !!c.water,
-  },
-];
-
 export default function Features({ camper }: FeaturesProps) {
-  // чипы: берём только те, что подходят этому кемперу
   const featureBadges = FEATURE_CONFIG.filter((cfg) => cfg.isActive(camper));
 
-  // --------- характеристики ---------
   const details: VehicleDetail[] = [
     { key: "form", label: "Form", value: camper.form },
     { key: "length", label: "Length", value: camper.length },
@@ -123,7 +72,9 @@ export default function Features({ camper }: FeaturesProps) {
           {details.map((item) => (
             <li key={item.key} className={styles.item}>
               <span className={styles.label}>{item.label}</span>
-              <span className={styles.value}>{capitalize(item.value)}</span>
+              <span className={styles.value}>
+                {formatDetailValue(item.value)}
+              </span>
             </li>
           ))}
         </ul>

@@ -63,7 +63,6 @@ export default function CamperPage() {
 
         {!isLoading && !error && camper && (
           <section className={styles.camperPage}>
-            {/* Верхняя часть */}
             <div className={styles.camperTop}>
               <div className={styles.camperTopHeader}>
                 <div className={styles.camperTopInfo}>
@@ -108,9 +107,7 @@ export default function CamperPage() {
               <p className={styles.camperDescription}>{camper.description}</p>
             </div>
 
-            {/* Нижняя часть */}
             <div className={styles.camperBottom}>
-              {/* табы сверху, на всю ширину */}
               <div className={styles.camperTabs}>
                 <button
                   type="button"
@@ -137,7 +134,6 @@ export default function CamperPage() {
                 </button>
               </div>
 
-              {/* под линией — левая и правая колонка */}
               <div className={styles.camperBottomContent}>
                 <div className={styles.camperLeft}>
                   {tab === "features" && <Features camper={camper} />}

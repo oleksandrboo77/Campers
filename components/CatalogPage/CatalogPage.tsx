@@ -24,7 +24,6 @@ export default function CatalogPage() {
             <Filter />
           </div>
 
-          {/* Контент справа */}
           <section className={styles.content}>
             {isLoading && campers.length === 0 && <p>Loading...</p>}
             {error && <p>{error}</p>}

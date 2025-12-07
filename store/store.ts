@@ -6,7 +6,7 @@ import { fetchCampers } from "../lib/api";
 import type { Camper, Filters } from "../lib/types";
 
 interface CampersState {
-  campers: Camper[]; // ВСЕГДА массив
+  campers: Camper[];
   page: number;
   limit: number;
   isEnd: boolean;
@@ -32,7 +32,7 @@ const defaultFilters: Filters = {
 export const useCampersStore = create<CampersState>()(
   persist(
     (set, get) => ({
-      campers: [], // << ВАЖНО: начальное значение – пустой массив
+      campers: [],
       page: 1,
       limit: 4,
       isEnd: false,
@@ -45,7 +45,7 @@ export const useCampersStore = create<CampersState>()(
         set({
           filters,
           page: 1,
-          campers: [], // при смене фильтра сбрасываем прошлые результаты
+          campers: [],
           isEnd: false,
         });
       },
@@ -62,14 +62,17 @@ export const useCampersStore = create<CampersState>()(
 
         try {
           const data = await fetchCampers({ page: 1, limit, filters });
-          // data ДОЛЖЕН быть массивом Camper[]
+
           set({
             campers: data,
             isEnd: data.length < limit,
           });
         } catch (error) {
           console.error(error);
-          set({ error: "Failed to load campers" });
+          set({
+            error:
+              "The selected cars are not available, please contact us next time, but in the meantime you can look at others",
+          });
         } finally {
           set({ isLoading: false });
         }
@@ -92,7 +95,10 @@ export const useCampersStore = create<CampersState>()(
           });
         } catch (error) {
           console.error(error);
-          set({ error: "Failed to load campers" });
+          set({
+            error:
+              "The selected cars are not available, please contact us next time, but in the meantime you can look at others",
+          });
         } finally {
           set({ isLoading: false });
         }

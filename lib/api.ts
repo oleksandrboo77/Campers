@@ -1,4 +1,3 @@
-// lib/api.ts
 import axios from "axios";
 import type { Camper, Filters } from "./types";
 
@@ -12,7 +11,6 @@ interface FetchCampersOptions {
   filters: Filters;
 }
 
-// возможные форматы ответа: либо массив, либо объект с items
 type CampersApiResponse = Camper[] | { items: Camper[]; total?: number };
 
 function isItemsResponse(
@@ -21,7 +19,6 @@ function isItemsResponse(
   return !Array.isArray(data) && "items" in data;
 }
 
-// список кемперов с фильтрацией и пагинацией на бекенде
 export async function fetchCampers(
   options: FetchCampersOptions
 ): Promise<Camper[]> {
@@ -32,17 +29,14 @@ export async function fetchCampers(
     limit,
   };
 
-  // Локация — через search, чтобы "Kyiv" находил "Kyiv, Ukraine"
   if (filters.location.trim()) {
     params.search = filters.location.trim();
   }
 
-  // Тип кузова — мапим на поле form в мокапи
   if (filters.bodyType) {
-    params.form = filters.bodyType; // 'panelTruck' | 'fullyIntegrated' | 'alcove'
+    params.form = filters.bodyType;
   }
 
-  // Оборудование — булевые флаги: ?AC=true&kitchen=true...
   filters.equipment.forEach((item) => {
     params[item] = true;
   });
@@ -52,20 +46,16 @@ export async function fetchCampers(
   let items: Camper[];
 
   if (Array.isArray(data)) {
-    // вариант: бекенд сразу отдал массив
     items = data;
   } else if (isItemsResponse(data)) {
-    // вариант: { items: [...], total: number }
     items = data.items;
   } else {
-    // на всякий пожарный
     items = [];
   }
 
   return items;
 }
 
-// один кемпер по id
 export async function fetchCamperById(id: string): Promise<Camper> {
   const { data } = await api.get<Camper>(`/campers/${id}`);
   return data;

@@ -22,8 +22,7 @@ export default function BookingForm({ camperName }: BookingFormProps) {
     const comment = (formData.get("comment") as string) || "";
 
     if (!name || !email || !date) {
-      // тут можно потом красиво показать ошибки, пока просто alert
-      alert("Заполни Name, Email и выбери дату 🧐");
+      alert("Please fill all required fields.");
       return;
     }
 

@@ -18,10 +18,6 @@ export interface GalleryImage {
   original?: string;
 }
 
-/**
- * Camper теперь РАСШИРЯЕТ VehicleDetails,
- * значит у него есть form, length, width, height, tank, consumption
- */
 export interface Camper extends VehicleDetails {
   id: string;
   name: string;
@@ -43,10 +39,6 @@ export interface Camper extends VehicleDetails {
   microwave?: boolean;
   gas?: boolean;
   water?: boolean;
-
-  // ⛔ ВОТ ЭТО УДАЛЯЕМ:
-  // details?: VehicleDetails;
-
   reviews?: Review[];
 }
 
