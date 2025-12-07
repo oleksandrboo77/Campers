@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+TravelTrucks - Camper Rental Platform
+Live Demo: https://campers-sooty.vercel.app/ | API: MockAPI
 
-## Getting Started
+📋 Опис проекту
+Frontend для компанії з оренди кемперів. Додаток дозволяє переглядати каталог, фільтрувати кемпери, переглядати деталі та бронювати.
 
-First, run the development server:
+🛠 Технології
+Next.js 14 з App Router
 
-```bash
+TypeScript для типізації
+
+Zustand для управління станом
+
+Axios для HTTP-запитів
+
+CSS Modules для стилізації
+
+🚀 Швидкий запуск
+Клонуйте репозиторій
+
+bash
+git clone https://github.com/ваш-профіль/traveltrucks.git
+cd traveltrucks
+Встановіть залежності
+
+bash
+npm install
+Запустіть проект
+
+bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Відкрийте http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🌐 Маршрути
+/ - Головна сторінка з банером
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+/catalog - Каталог всіх кемперів
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+/catalog/[id] - Детальна інформація про конкретний кемпер
 
-## Learn More
+🔧 Основні функції:
 
-To learn more about Next.js, take a look at the following resources:
+📚 Каталог
+Фільтрація за локацією, типом транспорту, зручностями
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Пагінація "Load More" (обробка на бекенді)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Додавання до обраних (збереження в localStorage)
 
-## Deploy on Vercel
+Ціна у форматі 8000.00
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🚐 Детальна сторінка
+Дві вкладки: Features та Reviews
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Детальна інформація про технічні характеристики
+
+Відгуки з рейтингом (1-5 зірок)
+
+Форма бронювання з валідацією
+
+Сповіщення про успішне бронювання
+
+🔄 Управління станом
+Zustand для глобального стану
+
+Зберігання: список кемперів, фільтри, обрані
+
+Автоматичне оновлення при зміні фільтрів
+
+📦 Розгортання
+Проект готовий до деплою на Vercel:
+
+bash
+npm run build
+# Автоматичний деплой через Vercel
+✅ Вимоги виконані
+✅ Відповідність макету
+
+✅ Фільтрація на бекенді
+
+✅ Пагінація через API
+
+✅ Адаптивна верстка
+
+✅ Валідна семантична розмітка
+
+✅ Завантажувачі для асинхронних запитів
+
+✅ Збереження обраних при оновленні
+
+📞 Контакти
+Автор: Олександр
+GitHub: github.com/oleksandrboo77
+
+Розроблено з використанням Next.js, TypeScript та CSS Modules
