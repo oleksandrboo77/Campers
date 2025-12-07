@@ -44,12 +44,12 @@ npm run dev
 
 Після запуску застосунок доступний за адресою http://localhost:3000
 
-Деплой
+## Деплой
 
 Проєкт задеплоєний на Vercel:
 https://campers-sooty.vercel.app/
 
-Автор
+## Автор
 
 Олександр Бондаренко
 GitHub: https://github.com/oleksandrboo77
