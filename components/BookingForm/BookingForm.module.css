@@ -1,57 +1,92 @@
 .form {
-  background-color: #ffffff;
+  width: 100%;
+  max-width: 560px;
+  padding: 44px 57px 44px 57px;
   border-radius: 20px;
   border: 1px solid #dadde1;
-  padding: 24px;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(16, 24, 40, 0.03);
+}
+
+.header {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
 .title {
-  margin: 0;
-  font-size: 20px;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+  margin: 0;
 }
 
 .subtitle {
-  margin: 0 0 12px;
-  font-size: 14px;
-  color: #6c727f;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #6c717b;
+  margin: 0;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field {
+  display: block;
+  /* margin-bottom: 14px; */
 }
 
 .input {
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid #dadde1;
-  font-size: 14px;
+  width: 100%;
+  border-radius: 12px;
+  border: none;
+  padding: 14px 18px;
+  background-color: #f7f7f7;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #6c717b;
+}
+
+.input::placeholder {
+  color: #6c727f;
 }
 
 .textarea {
-  min-height: 80px;
   resize: vertical;
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid #dadde1;
-  font-size: 14px;
+  min-height: 96px;
 }
 
-.button {
-  margin-top: 8px;
-  padding: 12px 24px;
+.submit {
+  font-family: "Inter", sans-serif;
+  display: block;
+  margin: 24px auto 0;
+  padding: 16px 60px;
   border-radius: 200px;
   border: none;
-  background-color: #e44848;
-  color: #ffffff;
-  font-weight: 600;
+
+  color: #fff;
+  background: #e44848;
   cursor: pointer;
+  transition:
+    background 150ms ease-in-out,
+    transform 80ms ease-in-out;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: #fff;
 }
 
-.button:disabled {
-  opacity: 0.7;
-  cursor: default;
-}
-
-.button:not(:disabled):hover {
-  background-color: #d84343;
+.submit:hover {
+  background: #d84343;
 }

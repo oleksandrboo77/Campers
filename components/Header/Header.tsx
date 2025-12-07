@@ -7,19 +7,28 @@ import css from "./Header.module.css";
 export default function Header() {
   return (
     <header className={css.header}>
-      <div className={css.navigationMenu}>
-        <Link href="/" className={css.logo}>
-          <Image src="/logo.svg" alt="TravelTrucks" width={136} height={16} />
-        </Link>
+      <div className={css.container}>
+        <div className={css.navigationMenu}>
+          <div className={css.logoWrapper}>
+            <Link href="/" className={css.logo}>
+              <Image
+                src="/logo.svg"
+                alt="TravelTrucks"
+                width={136}
+                height={16}
+              />
+            </Link>
+          </div>
 
-        <nav className={css.links}>
-          <Link href="/" className={css.homeLink}>
-            Home
-          </Link>
-          <Link href="/catalog" className={css.catalogLink}>
-            Catalog
-          </Link>
-        </nav>
+          <nav className={css.links}>
+            <Link href="/" className={css.homeLink}>
+              Home
+            </Link>
+            <Link href="/catalog" className={css.catalogLink}>
+              Catalog
+            </Link>
+          </nav>
+        </div>
       </div>
     </header>
   );

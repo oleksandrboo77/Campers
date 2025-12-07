@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "./BookingForm.module.css";
+import DatePicker from "../DatePicker/DatePicker";
 
 interface BookingFormProps {
   camperName: string;
@@ -9,41 +10,85 @@ interface BookingFormProps {
 
 export default function BookingForm({ camperName }: BookingFormProps) {
   const [isSending, setIsSending] = useState(false);
+  const [date, setDate] = useState<Date | null>(null);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const name = (formData.get("name") as string) || "";
+    const email = (formData.get("email") as string) || "";
+    const comment = (formData.get("comment") as string) || "";
+
+    if (!name || !email || !date) {
+      // тут можно потом красиво показать ошибки, пока просто alert
+      alert("Заполни Name, Email и выбери дату 🧐");
+      return;
+    }
+
     setIsSending(true);
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    alert(`Booking for ${camperName} was successful!`);
+    alert(
+      `Booking for ${camperName} on ${date.toLocaleDateString()} was successful!`
+    );
+
     setIsSending(false);
-    event.currentTarget.reset();
+    form.reset();
+    setDate(null);
   };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <h3 className={styles.title}>Book your campervan now</h3>
-      <p className={styles.subtitle}>
-        Stay connected! We are always ready to help you.
-      </p>
+      <div className={styles.header}>
+        <h3 className={styles.title}>Book your campervan now</h3>
+        <p className={styles.subtitle}>
+          Stay connected! We are always ready to help you.
+        </p>
+      </div>
 
-      <input name="name" placeholder="Name" required className={styles.input} />
-      <input
-        name="email"
-        type="email"
-        placeholder="Email"
-        required
-        className={styles.input}
-      />
-      <input name="date" type="date" required className={styles.input} />
-      <textarea
-        name="comment"
-        placeholder="Comment"
-        className={styles.textarea}
-      />
+      <div className={styles.fields}>
+        <label className={styles.field}>
+          <input
+            name="name"
+            type="text"
+            placeholder="Name*"
+            required
+            className={styles.input}
+          />
+        </label>
 
-      <button type="submit" disabled={isSending} className={styles.button}>
+        <label className={styles.field}>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email*"
+            required
+            className={styles.input}
+          />
+        </label>
+
+        <label className={styles.field}>
+          <DatePicker
+            placeholder="Booking date*"
+            selected={date}
+            onSelect={setDate}
+          />
+        </label>
+
+        <label className={styles.field}>
+          <textarea
+            name="comment"
+            placeholder="Comment"
+            rows={4}
+            className={`${styles.input} ${styles.textarea}`}
+          />
+        </label>
+      </div>
+
+      <button type="submit" className={styles.submit} disabled={isSending}>
         {isSending ? "Sending..." : "Send"}
       </button>
     </form>

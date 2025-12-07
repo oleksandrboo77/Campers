@@ -5,6 +5,7 @@ import styles from "./CamperCard.module.css";
 import type { Camper, GalleryImage } from "../../lib/types";
 import { useCampersStore } from "../../store/store";
 import { formatPrice } from "../../lib/utils";
+import { getCamperFeatures } from "../../lib/camperFeatures";
 
 interface CamperCardProps {
   camper: Camper;
@@ -21,7 +22,7 @@ export default function CamperCard({ camper }: CamperCardProps) {
   const favorite = isFavorite(camper.id);
 
   const firstImage = getImageUrl(camper.gallery?.[0]);
-
+  const features = getCamperFeatures(camper);
 
   return (
     <article className={styles.card}>
@@ -71,18 +72,18 @@ export default function CamperCard({ camper }: CamperCardProps) {
 
         <p className={styles.description}>{camper.description}</p>
 
-        <div className={styles.badges}>
-          {camper.transmission && (
-            <span className={styles.badge}>{camper.transmission}</span>
-          )}
-          {camper.engine && (
-            <span className={styles.badge}>{camper.engine}</span>
-          )}
-          {camper.AC && <span className={styles.badge}>AC</span>}
-          {camper.kitchen && <span className={styles.badge}>Kitchen</span>}
-          {camper.bathroom && <span className={styles.badge}>Bathroom</span>}
-          {camper.TV && <span className={styles.badge}>TV</span>}
-        </div>
+        {features.length > 0 && (
+          <div className={styles.badges}>
+            {features.map((feature) => (
+              <div key={feature.key} className={styles.badge}>
+                <svg className={styles.badgeIcon} aria-hidden="true">
+                  <use href={feature.iconHref} />
+                </svg>
+                <span>{feature.label}</span>
+              </div>
+            ))}
+          </div>
+        )}
 
         <div className={styles.footer}>
           <Link href={`/catalog/${camper.id}`}>
