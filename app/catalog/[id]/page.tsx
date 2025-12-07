@@ -70,7 +70,7 @@ export default function CamperPage() {
                   <h1 className={styles.camperTitle}>{camper.name}</h1>
 
                   <p className={styles.camperTopMeta}>
-                    <div className={styles.rating}>
+                    <span className={styles.rating}>
                       {" "}
                       <svg className={styles.starIcon} aria-hidden="true">
                         <use href="/icons.svg#pressed_star" />
@@ -79,15 +79,15 @@ export default function CamperPage() {
                         {Number(camper.rating || 0).toFixed(1)} (
                         {camper.reviews?.length ?? 0} reviews)
                       </span>
-                    </div>
+                    </span>
 
-                    <div className={styles.location}>
+                    <span className={styles.location}>
                       {" "}
                       <svg className={styles.mapIcon} aria-hidden="true">
                         <use href="/icons.svg#map" />
                       </svg>{" "}
                       {camper.location}
-                    </div>
+                    </span>
                   </p>
                 </div>
 
@@ -110,41 +110,45 @@ export default function CamperPage() {
 
             {/* Нижняя часть */}
             <div className={styles.camperBottom}>
-              <div className={styles.camperLeft}>
-                <div className={styles.camperTabs}>
-                  <button
-                    type="button"
-                    className={
-                      tab === "features"
-                        ? `${styles.camperTab} ${styles.camperTabActive}`
-                        : styles.camperTab
-                    }
-                    onClick={() => setTab("features")}
-                  >
-                    Features
-                  </button>
+              {/* табы сверху, на всю ширину */}
+              <div className={styles.camperTabs}>
+                <button
+                  type="button"
+                  className={
+                    tab === "features"
+                      ? `${styles.camperTab} ${styles.camperTabActive}`
+                      : styles.camperTab
+                  }
+                  onClick={() => setTab("features")}
+                >
+                  Features
+                </button>
 
-                  <button
-                    type="button"
-                    className={
-                      tab === "feedback"
-                        ? `${styles.camperTab} ${styles.camperTabActive}`
-                        : styles.camperTab
-                    }
-                    onClick={() => setTab("feedback")}
-                  >
-                    Reviews
-                  </button>
-                </div>
-
-                {tab === "features" && <Features camper={camper} />}
-                {tab === "feedback" && (
-                  <FeedbackList reviews={camper.reviews ?? []} />
-                )}
+                <button
+                  type="button"
+                  className={
+                    tab === "feedback"
+                      ? `${styles.camperTab} ${styles.camperTabActive}`
+                      : styles.camperTab
+                  }
+                  onClick={() => setTab("feedback")}
+                >
+                  Reviews
+                </button>
               </div>
 
-              <div className={styles.camperRight}>
-                <BookingForm camperName={camper.name} />
+              {/* под линией — левая и правая колонка */}
+              <div className={styles.camperBottomContent}>
+                <div className={styles.camperLeft}>
+                  {tab === "features" && <Features camper={camper} />}
+                  {tab === "feedback" && (
+                    <FeedbackList reviews={camper.reviews ?? []} />
+                  )}
+                </div>
+
+                <div className={styles.camperRight}>
+                  <BookingForm camperName={camper.name} />
+                </div>
               </div>
             </div>
           </section>

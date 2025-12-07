@@ -1,7 +1,7 @@
 .form {
-  width: 100%;
-  max-width: 560px;
-  padding: 44px 57px 44px 57px;
+  width: 641px;
+  /* max-width: 641px; */
+  padding: 44px;
   border-radius: 20px;
   border: 1px solid #dadde1;
   background: #fff;

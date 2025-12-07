@@ -8,7 +8,7 @@ interface FeaturesProps {
 interface FeatureConfig {
   key: string;
   label: string;
-  iconHref: string; // полный href до символа в спрайте
+  iconHref: string;
   isActive: (camper: Camper) => boolean;
 }
 
@@ -18,7 +18,11 @@ interface VehicleDetail {
   value?: string;
 }
 
-// ВСЕ возможные чипы, один раз описали
+function capitalize(value?: string) {
+  if (!value) return "";
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
 const FEATURE_CONFIG: FeatureConfig[] = [
   {
     key: "automatic",
@@ -119,7 +123,7 @@ export default function Features({ camper }: FeaturesProps) {
           {details.map((item) => (
             <li key={item.key} className={styles.item}>
               <span className={styles.label}>{item.label}</span>
-              <span className={styles.value}>{item.value}</span>
+              <span className={styles.value}>{capitalize(item.value)}</span>
             </li>
           ))}
         </ul>
